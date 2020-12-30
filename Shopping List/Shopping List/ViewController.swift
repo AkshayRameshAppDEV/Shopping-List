@@ -24,7 +24,7 @@ class ViewController: UITableViewController {
     }
     
     @objc func shareShoppingList() {
-        let shoppingListString = shoppingList.joined(separator: "\n")
+        let shoppingListString = shoppingList.joined(separator: "\n") //joins array elements with \n and results string of array elements with separator
         let actionVC = UIActivityViewController(activityItems: [shoppingListString], applicationActivities: nil)
         present(actionVC, animated: true)
     }
