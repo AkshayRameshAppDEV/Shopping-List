@@ -13,6 +13,20 @@ class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initNavBar()
+        initToolbar()
+    }
+    
+    func initToolbar() {
+        let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareShoppingList))
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbarItems = [spacer,shareButton,spacer]
+        navigationController?.isToolbarHidden = false
+    }
+    
+    @objc func shareShoppingList() {
+        let shoppingListString = shoppingList.joined(separator: "\n")
+        let actionVC = UIActivityViewController(activityItems: [shoppingListString], applicationActivities: nil)
+        present(actionVC, animated: true)
     }
     
     func initNavBar() {
